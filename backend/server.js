@@ -1,6 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
 
 const app = express();
 
@@ -9,7 +11,7 @@ app.use(express.json()); //Enabling parsing of JSON request bodies
 
 const PORT = 5000;
 
-const MONGO_URI = "MONGODB CONNECTION STRING GOES HERE"
+mongoose.connect(process.env.MONGO_URI, {...}); // Accessing MongoDB credentials in "conn.env"
 
 const anetCircuitsRouter = require('./routes/anetCircuits');
 const bnetCircuitsRouter = require('./routes/bnetCircuits');

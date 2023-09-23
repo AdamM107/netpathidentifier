@@ -7,4 +7,5 @@ const bnetCircuitSchema = new mongoose.Schema({
     Mgmt_IP: String
 });
 
+
 module.exports = mongoose.model('BNetCircuit',bnetCircuitSchema);
