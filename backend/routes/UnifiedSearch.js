@@ -37,4 +37,18 @@ router.post('/search', async (req, res) => {
     }
 });
 
+router.post('/searchAll', async (req, res) => {
+    console.log('Request for all entries received...')
+    let anetResults = [];
+    let bnetResults = [];
+
+    try {
+        anetResults = await ANetCircuit.find({});
+        bnetResults = await BNetCircuit.find({});
+        res.json({ anetResults, bnetResults });
+    } catch (error) {
+        res.status(500).json({ error: 'Error occurred returning all entries'})
+    }
+});
+
 module.exports = router;
