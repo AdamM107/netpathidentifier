@@ -25,10 +25,11 @@ function App() {
 
 // Search functionality using conditional logic to either show maintainer mode or perform search
 function handleSubmit() {
+    const backendURL = process.env.REACT_APP_API_URL;
     if (keyword === "MAINTAINER MODE") {
         setMaintainerMode(true);
         console.log("Maintainer Mode Enabled.");
-        axios.post('http://localhost:5002/searchAll', { keyword })
+        axios.post(`${backendURL}/searchAll`, { keyword })
             .then(response => {
                 setAnetResults(response.data.anetResults);
                 setBnetResults(response.data.bnetResults);
@@ -41,7 +42,7 @@ function handleSubmit() {
             });
     } else {
         console.log('Search triggered...');
-        axios.post('http://localhost:5002/search', { keyword })
+        axios.post(`${backendURL}/search`, { keyword })
             .then(response => {
                 // Handle and display response data
                 console.log('Search initiated...');
@@ -70,7 +71,8 @@ function handleSubmit() {
 }
 
 const fetchData = () => {
-    axios.post('http://localhost:5002/searchAll', { keyword: "MAINTAINER MODE" })
+    const backendURL = process.env.REACT_APP_API_URL;
+    axios.post(`${backendURL}/searchAll`, { keyword: "MAINTAINER MODE" })
         .then(response => {
             setAnetResults(response.data.anetResults);
             setBnetResults(response.data.bnetResults);

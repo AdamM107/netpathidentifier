@@ -24,7 +24,7 @@ function MaintainerForm({ selectedRow, selectedRowType, onRowDeleted, formData, 
     };
 
     const handleSubmit = () => {
-        const backendURL = 'http://localhost:5004';
+        const backendURL = process.env.REACT_APP_API_URL;
         const endpoint = circuitType === "ANet" ? '/api/anetCircuits/create' : '/api/bnetCircuits/create'
         axios.post(backendURL + endpoint, formData)
             .then(response => {
@@ -41,7 +41,7 @@ function MaintainerForm({ selectedRow, selectedRowType, onRowDeleted, formData, 
     };
 
     const handleUpdate = () => {
-        const backendURL = 'http://localhost:5002';
+        const backendURL = process.env.REACT_APP_API_URL;
         const endpoint = circuitType === "ANet" ? `/api/anetCircuits/update/${selectedRow._id}` : `/api/bnetCircuits/update/${selectedRow._id}`;
         axios.put(backendURL + endpoint, formData)
             .then(response => {
@@ -55,14 +55,15 @@ function MaintainerForm({ selectedRow, selectedRowType, onRowDeleted, formData, 
     }
 
     function handleDelete() {
+        const backendURL = process.env.REACT_APP_API_URL;
         if (selectedRow && selectedRow._id) {
             let endpoint;
             if (selectedRowType === 'ANet') {
-                endpoint = `http://localhost:5002/api/anetCircuits/delete/${selectedRow._id}`;
+                endpoint = `${backendURL}/api/anetCircuits/delete/${selectedRow._id}`;
                 alert('Data successfully removed.');
                 fetchData();
             } else if (selectedRowType === 'BNet') {
-                endpoint = `http://localhost:5002/api/bnetCircuits/delete/${selectedRow._id}`;
+                endpoint = `${backendURL}/api/bnetCircuits/delete/${selectedRow._id}`;
                 alert('Data successfully removed.');
                 fetchData();
             } else {

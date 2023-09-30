@@ -7,7 +7,8 @@ function AnetCircuitsList() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('http://localhost:5000/api/anet');
+            const backendURL = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${backendURL}/api/anet`);
             const data = await fetchAnetCircuits();
             setCircuits(data);
         }
