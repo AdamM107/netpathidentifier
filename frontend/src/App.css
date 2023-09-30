@@ -1,0 +1,170 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  padding-top: 60px;
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.Company-logo {
+  pointer-events: none;
+}
+
+.App-header {
+  padding-bottom: 40px;
+  background-color: white;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 1vmin);
+  color: #0175C9;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.results {
+  margin-top: auto;
+  border: 3px solid deepskyblue;
+  position: relative;
+  z-index: 99;
+  background-color: slategray;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.header-row {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  background-color: #0175C9;
+  padding: 8px;
+  border-bottom: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.header-row span, .results-list li span {
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.results-list {
+  font-size: 16px;
+  background-color: #F5F5F5;
+  list-style-type: none;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 4px;
+  padding-bottom: 20px;
+  padding-top: 1px;
+}
+
+.results-list li {
+  display: flex;
+  justify-content: space-between;
+}
+.SubmitButton {
+  border: none;
+  background-color: #0175C9;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial, serif;
+  border-radius: 5px;
+}
+
+.AddDataButton {
+  border: none;
+  background-color: #0175C9;
+  margin: 15px;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial, serif;
+  border-radius: 5px;
+}
+
+.searchBar {
+  border-radius: 10px;
+  border: solid white;
+  background-color: #e8e8e8;
+}
+
+.MaintainerEntry{
+  margin-top: 15px;
+}
+
+.MaintainerEntryField{
+  width: 55%; /* or whatever width you desire */
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.CircuitTypeRadio{
+  margin: 10px;
+}
+
+ .radio-container{
+   display: block;
+   margin-top: 30px;
+ }
+
+ .ExtMaintButton{
+   border: none;
+   background-color: #9F9E9E;
+   padding: 12px 20px;
+   font-size: 16px;
+   color: white;
+   font-weight: bold;
+   font-family: Arial, serif;
+   border-radius: 5px;
+ }
+
+ .ClearButton{
+   margin: 15px;
+   border: none;
+   background-color: #9F9E9E;
+   padding: 6px 20px;
+   font-size: 16px;
+   color: white;
+   font-weight: bold;
+   font-family: Arial, serif;
+   border-radius: 5px;
+ }
+
+ .DeleteDataButton{
+   border: solid orange;
+   background-color: red;
+   padding: 12px 20px;
+   font-size: 16px;
+   color: white;
+   font-weight: bold;
+   font-family: Arial, serif;
+   border-radius: 5px;
+ }
+
+ .selected-row{
+   background-color: #add8e6;
+ }
