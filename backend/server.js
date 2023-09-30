@@ -2,16 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
-
-
+const path = require('path');
 const app = express();
 
 app.use(cors()); // Enabling CORS for all routes
 app.use(express.json()); //Enabling parsing of JSON request bodies
-
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 const PORT = 5002;
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
+});
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
