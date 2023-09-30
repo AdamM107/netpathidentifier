@@ -9,7 +9,7 @@ function MaintainerForm({ selectedRow, selectedRowType, onRowDeleted, formData, 
             setCircuitType(selectedRowType);
             setFormData(selectedRow);
         }
-    }, [selectedRow, selectedRowType]);
+    }, [selectedRow, selectedRowType, setFormData]);
 
     const handleChange = (e) => {
         setFormData({
