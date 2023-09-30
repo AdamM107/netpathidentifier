@@ -19,14 +19,14 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
 });
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {
     console.log('Error connecting to MongoDB', err);
-}); // Accessing MongoDB credentials in ".env"
+}); // Accessing MongoDB credentials in ".env.MONGODB_URI"
 
 const anetCircuitsRouter = require('./routes/anetCircuits');
 const bnetCircuitsRouter = require('./routes/bnetCircuits');
