@@ -9,7 +9,11 @@ app.use(cors()); // Enabling CORS for all routes
 app.use(express.json()); //Enabling parsing of JSON request bodies
 app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-const PORT = 5002;
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, function() {
+    console.log(`Server is running on ${PORT}`);
+});
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
