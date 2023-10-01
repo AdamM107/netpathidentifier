@@ -5,11 +5,22 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 
-app.use(cors({
-    origin: '/../frontend/',
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+
+const whitelist = ['http://localhost:3000', 'https://net-path-identifier-1ed05fb97878.herokuapp.com/' ];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-})); // Enabling CORS for all routes
+};
+
+app.use(cors(corsOptions));
 app.use(express.json()); //Enabling parsing of JSON request bodies
 app.use(express.static(path.join(__dirname, 'build')));
 
