@@ -45,7 +45,3 @@ app.get('/', (req, res) => {
 app.use(unifiedSearchRoute);
 app.use('/api/anetCircuits', anetCircuitsRouter);
 app.use('/api/bnetCircuits', bnetCircuitsRouter);
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Server is running');
-});
