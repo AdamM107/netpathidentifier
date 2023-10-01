@@ -5,7 +5,11 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 
-app.use(cors()); // Enabling CORS for all routes
+app.use(cors({
+    origin: '/../frontend/',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+})); // Enabling CORS for all routes
 app.use(express.json()); //Enabling parsing of JSON request bodies
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -41,3 +45,7 @@ app.get('/', (req, res) => {
 app.use(unifiedSearchRoute);
 app.use('/api/anetCircuits', anetCircuitsRouter);
 app.use('/api/bnetCircuits', bnetCircuitsRouter);
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Server is running');
+});
