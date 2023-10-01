@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors()); // Enabling CORS for all routes
 app.use(express.json()); //Enabling parsing of JSON request bodies
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 const PORT = process.env.PORT || 8009;
 
@@ -16,7 +16,7 @@ app.listen(PORT, function() {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
+    res.sendFile(path.join(__dirname + 'build/index.html'));
 });
 console.log('before');
 console.log(process.env.MONGODB_URI);
