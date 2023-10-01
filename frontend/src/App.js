@@ -26,6 +26,7 @@ function App() {
 // Search functionality using conditional logic to either show maintainer mode or perform search
 function handleSubmit() {
     const backendURL = process.env.REACT_APP_API_URL;
+    console.log(backendURL);
     if (keyword === "MAINTAINER MODE") {
         setMaintainerMode(true);
         console.log("Maintainer Mode Enabled.");
