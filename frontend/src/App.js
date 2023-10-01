@@ -42,7 +42,7 @@ function handleSubmit() {
                 }
             });
     } else {
-        console.log('Search triggered...');
+        console.log('Search triggered..');
         axios.post(`${backendURL}/search`, { keyword })
             .then(response => {
                 // Handle and display response data
