@@ -11,7 +11,7 @@ const whitelist = ['http://localhost:3000', 'https://net-path-identifier-1ed05fb
 const corsOptions = {
     origin: function (origin, callback) {
         console.log('Incoming origin:', origin);
-        if (!origin || whitelist.indexOf(origin) !== -1) {
+        if (!origin || whitelist.indexOf(origin) !== -1 || origin === 'undefined') {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
