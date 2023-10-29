@@ -1,5 +1,5 @@
 import netlogo from '../src/assets/netlogo.png';
-import placeholderlogo1 from '../src/assets/placeholderlogo1.png'
+import AMLogo from '../src/assets/AMLogo.svg'
 import './App.css';
 import '../src/styles/input.css'
 import React from 'react';
@@ -104,7 +104,7 @@ function handleRowDeleted(deletedRow) {
     return (
         <div className="App">
             <header>
-                <img src={placeholderlogo1} className="Company-logo" alt="company" />
+                <img src={AMLogo} className="Company-logo" alt="company" />
             </header>
             <header className="App-header">
                 <img src={netlogo} className="App-logo" alt="logo" />
@@ -128,7 +128,7 @@ function handleRowDeleted(deletedRow) {
                     ) : (
                         <button className="SubmitButton" onClick={handleSubmit}>Submit</button>
                 )}
-                <button className="ClearButton" onClick={handleClear}>Clear Selection</button>
+                <button className="ClearButton" onClick={handleClear} style={{ opacity: selectedRow ? 1 : 0.2 }}>Clear Selection</button>
 
             </header>
             {showANetResults && (

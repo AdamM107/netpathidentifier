@@ -10,6 +10,8 @@
 
 .Company-logo {
   pointer-events: none;
+  padding: 50px;
+  height: 110px;
 }
 
 .App-header {
