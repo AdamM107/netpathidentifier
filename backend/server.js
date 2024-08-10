@@ -6,11 +6,12 @@ const path = require('path');
 const app = express();
 
 
-const whitelist = ['http://localhost:3000', 'https://net-path-identifier-1ed05fb97878.herokuapp.com/' ];
+const whitelist = ['http://localhost:3000', 'https://net-path-identifier-1ed05fb97878.herokuapp.com' ];
 
 const corsOptions = {
     origin: function (origin, callback) {
-        if (!origin || whitelist.indexOf(origin) !== -1) {
+        console.log('Incoming origin:', origin);
+        if (!origin || whitelist.indexOf(origin) !== -1 || origin === 'undefined') {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));

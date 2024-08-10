@@ -1,5 +1,5 @@
 import netlogo from '../src/assets/netlogo.png';
-import placeholderlogo1 from '../src/assets/placeholderlogo1.png'
+import NewOxideLogo from '../src/assets/NewOxideLogo.png'
 import './App.css';
 import '../src/styles/input.css'
 import React from 'react';
@@ -27,7 +27,7 @@ function App() {
 function handleSubmit() {
     const backendURL = process.env.REACT_APP_API_URL;
     console.log(backendURL);
-    if (keyword === "MAINTAINER MODE") {
+    if (keyword === "Test") {
         setMaintainerMode(true);
         console.log("Maintainer Mode Enabled.");
         axios.post(`${backendURL}/searchAll`, { keyword })
@@ -42,7 +42,7 @@ function handleSubmit() {
                 }
             });
     } else {
-        console.log('Search triggered....');
+        console.log('Search triggered...');
         axios.post(`${backendURL}/search`, { keyword })
             .then(response => {
                 // Handle and display response data
@@ -73,7 +73,7 @@ function handleSubmit() {
 
 const fetchData = () => {
     const backendURL = process.env.REACT_APP_API_URL;
-    axios.post(`${backendURL}/searchAll`, { keyword: "MAINTAINER MODE" })
+    axios.post(`${backendURL}/searchAll`, { keyword: "Test" })
         .then(response => {
             setAnetResults(response.data.anetResults);
             setBnetResults(response.data.bnetResults);
@@ -91,6 +91,7 @@ function handleRowClick(row, type) {
     setSelectedRowType(type);
 }
 
+
 function handleRowDeleted(deletedRow) {
     setAnetResults(anetResults.filter(row => row !== deletedRow));
     setBnetResults(bnetResults.filter(row => row !== deletedRow));
@@ -104,13 +105,16 @@ function handleRowDeleted(deletedRow) {
     return (
         <div className="App">
             <header>
-                <img src={placeholderlogo1} className="Company-logo" alt="company" />
+                <img src={NewOxideLogo} className="Company-logo" alt="company" />
             </header>
             <header className="App-header">
-                <img src={netlogo} className="App-logo" alt="logo" />
+                <p className="Demo-Disclaimer">Important: This web application is a public demo version showcasing only the core features of the full application.
+                    To protect the privacy and integrity of the original client, all data shown is fictional. <br></br>The original application is not designed for mobile use, and visual defects may occur.</p>
+                <img src={netlogo} className="App-logo" alt="logo"/>
                 <h3>Network Circuit Path Identifier </h3>
-                <p>Enter any available circuit information, such as a Circuit ID. </p>
-                <input className="searchBar" type="text" value={keyword} onChange={handleKeywordChange} />
+                <p>Enter any available circuit information, such as a Circuit ID. </p><br></br>
+                <p className="maintainerDesc">To manage all circuit information, enter "Test" below, and submit.</p>
+                <input className="searchBar" type="text" value={keyword} onChange={handleKeywordChange}/>
                 {isMaintainerMode ? (
                     <React.Fragment>
                         <MaintainerForm
@@ -121,14 +125,18 @@ function handleRowDeleted(deletedRow) {
                             setFormData={setFormData}
                             fetchData={fetchData}
                         />
-                        <button className="ExtMaintButton" onClick={() => window.location.reload()}>Exit Maintainer Mode</button>
+                        <button className="ExtMaintButton" onClick={() => window.location.reload()}>Exit Maintainer
+                            Mode
+                        </button>
                     </React.Fragment>
-                        // Maintainer mode button
+                    // Maintainer mode button
 
-                    ) : (
-                        <button className="SubmitButton" onClick={handleSubmit}>Submit</button>
+                ) : (
+                    <button className="SubmitButton" onClick={handleSubmit}>Submit</button>
                 )}
-                <button className="ClearButton" onClick={handleClear}>Clear Selection</button>
+                <button className="ClearButton" onClick={handleClear} style={{opacity: selectedRow ? 1 : 0.2}}>Clear
+                    Selection
+                </button>
 
             </header>
             {showANetResults && (
